@@ -1,0 +1,82 @@
+.credicard-dropdown {
+    width: 146px;
+    height: 50px;
+    background-color: #ffffff;
+    text-decoration: none;
+    border: 1px solid #d9d3cf;
+    padding: 4px;
+    padding-right: 16px;
+    padding-left: 18px;
+    display: flex;
+}
+
+.icon-dropdown{
+    float: left;
+}
+
+.icon-dropdown img {
+    float: left;
+    margin: auto;
+    width: 24px;
+    height: 24px;
+}
+
+.separator{
+float: left;
+top: 12px;
+height: 22px;
+left: 50px;
+border-left: 1px solid #d9d3cf;
+
+}
+
+.optionText{
+    float: right;
+    width: 100px;
+    height: 50px;
+
+    padding-top: 15px;
+}
+
+
+/*ITAU*/
+.credit-card-dropdown {
+    background-color: #ffffff;
+    text-decoration: none;
+    border: 1px solid #d9d3cf;
+    border-radius: 3px;
+    width: 185px;
+    height: 50px;
+    display: grid;
+    grid-template: "icono separador texto flecha";
+    grid-template-columns: 40px 5px 1fr 20px;
+}
+
+.icono {
+    grid-area: "icono";
+}
+.icono img{
+    width: 40px;
+    margin: auto !important;
+    padding-top:5px;
+}
+
+.separador {
+    grid-area: "separador";
+    border-left: 1px solid #d9d3cf;
+    height: 22px;
+    margin-top: 15px;
+}
+
+.texto {
+    grid-area: "texto";
+}
+
+.flecha {
+    grid-area: "flecha";
+}
+
+.flecha img {
+    margin-top: 20px;
+    width: 10px;
+}
