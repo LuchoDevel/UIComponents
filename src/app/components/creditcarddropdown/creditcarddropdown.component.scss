@@ -1,46 +1,6 @@
-.credicard-dropdown {
-    width: 146px;
-    height: 50px;
-    background-color: #ffffff;
-    text-decoration: none;
-    border: 1px solid #d9d3cf;
-    padding: 4px;
-    padding-right: 16px;
-    padding-left: 18px;
-    display: flex;
-}
-
-.icon-dropdown{
-    float: left;
-}
-
-.icon-dropdown img {
-    float: left;
-    margin: auto;
-    width: 24px;
-    height: 24px;
-}
-
-.separator{
-float: left;
-top: 12px;
-height: 22px;
-left: 50px;
-border-left: 1px solid #d9d3cf;
-
-}
-
-.optionText{
-    float: right;
-    width: 100px;
-    height: 50px;
-
-    padding-top: 15px;
-}
-
 
 /*ITAU*/
-.credit-card-dropdown {
+/*.credit-card-dropdown {
     background-color: #ffffff;
     text-decoration: none;
     border: 1px solid #d9d3cf;
@@ -79,4 +39,149 @@ border-left: 1px solid #d9d3cf;
 .flecha img {
     margin-top: 20px;
     width: 10px;
+}*/
+
+/**
+* Credit Card Dropdown
+* @Author Luis Morales
+* 2019
+*/
+
+/*
+* Fuente
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+a{
+    text-decoration: none;
+}
+
+.contendor{
+    font-family: 'Open Sans', sans-serif;
+    width: 90%;
+    
+}
+
+.selectbox{
+    width: 50%;
+    margin: auto;
+    position: relative;
+}
+
+.select{
+    width: 100%;
+    box-shadow: 0px 0px 0px rgba($color: #000000, $alpha: .16);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding: 30px;
+    transition: .2s ease all;
+    position: relative;
+    z-index: 200;
+    border: 1px solid #d9d3cf;
+}
+
+.select.active,
+.select:hover{
+    box-shadow: 0px 5px 10px rgba($color: #000000, $alpha: .16);  
+    border: 2px solid #afadac;
+
+}
+
+.select.active:before{
+    content: "";
+    display: block;
+    height: 0;
+    width: 0;
+    border-top: 15px solid #ce5c24;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid transparent;
+    position: absolute;
+    bottom: -30px;
+    left: calc(50% - 15px);
+}
+
+.separador {
+    grid-area: "separador";
+    border-left: 2px solid #d9d3cf;
+    height: 50px;
+    margin-top: 8px;
+}
+
+.select .arrow-select{
+    margin-left: 30px;
+}
+
+
+
+.descripcion{
+    scroll-margin-bottom: 10px;
+    font-size: 18px;
+    color: #434343;
+}
+
+.opciones{
+    background: #5c5a5a;
+    border-radius: 10px;
+    box-shadow: 0px 0px 0px rgba($color: #000000, $alpha: .16);
+    z-index: 100;
+    display: none;
+    width: 100%;
+}
+
+.opciones.active{
+    display: contents;
+    animation: fadeIn .3s forwards;
+}
+
+
+/**ANIMACIONES FADEIN*/
+@keyframes fadeIn {
+    from{
+        transform: translateY(-50px);
+    }
+    to{
+        transform: translateY(0px);
+    }
+}
+
+.contenido-opcion{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    transition: .2s ease all;
+}
+
+.opciones .contenido-opcion {
+    padding: 30px;
+}
+
+.contenido-opcion img {
+    width: 60px;
+    height: 60px;
+    margin-right: 30px;
+}
+
+.opciones .contenido-opcion:hover {
+    background: #ce5c24;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba($color: #000000, $alpha: .16);  
+
+}
+
+.opciones .contenido-opcion:hover .titulo,
+.opciones .contenido-opcion:hover .descripcion{
+    color: #fff;
+}
+
+.arrow-select{
+    margin-top: calc(6% - 5px);
+}
+
+.icono-select img{
+    margin-left: 30px;
 }

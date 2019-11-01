@@ -1,6 +1,4 @@
-
-   
-    <!--<div class="credicard-dropdown">
+<!--<div class="credicard-dropdown">
 
     <div class="textfirst">
         <div class="icon-dropdown">
@@ -28,7 +26,7 @@
     <input type="hidden" class="option" name="namesubmit" value="" /> 
   </div>-->
 
-<div class="credit-card-dropdown">
+<!--<div class="credit-card-dropdown">
     <div class="icono">
         <img src="assets/img/ico/cards-ico.jpg" alt="">
     </div>
@@ -39,4 +37,52 @@
     <div class="flecha">
         <img src="assets/img/ico/arrow-icon.png" alt="">
     </div>
+</div>-->
+
+
+<!--Credit Card Dropdown 
+@Author Luis Morales
+-->
+<div class="contenedor">
+    <div class="selectbox" (click)="activeSelect()">
+      <!--SELECT-->
+        <div class="select" id="select">
+          <div class="icono-select">
+            <img src="assets/img/ico/credit-card-ico.png" alt="">
+          </div>
+          <div class="separador"></div>
+          <div class="contenido-select">
+            <p class="descripcion">Selecciona tu tarjeta</p>
+          </div>
+          <div class="arrow-select">
+            <img src="assets/img/ico/down-arrow-icon.png" alt="">
+          </div>
+        </div>
+      <!-- FIN SELECT-->
+
+
+      <!--OPTIONS-->
+      <div class="opciones" id="opciones">
+          <ng-container *ngFor="let card of listCard">
+            <a href="#" id="opcion" (click)="selectOption(card, $event)">
+              <div class="contenido-opcion">
+                  <img [src]="card.imagen" alt="masterIco">
+                  <div class="textos">
+                    <p class="descripcion">{{card.descripcion}}</p>
+                  </div>
+              </div>
+            </a>
+          </ng-container>
+          
+          <!-- <a href="#" id="opcion">
+              <div class="contenido-opcion">
+                  <img src="assets/img/ico/card-visa-ico.png" alt="masterIco">
+                  <div class="textos">
+                    <p class="descripcion">**** 666</p>
+                  </div>
+              </div>
+            </a> -->
+      </div>
+      <!--FIN OPTIONS-->
+      </div>
 </div>
