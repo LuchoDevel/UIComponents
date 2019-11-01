@@ -19,9 +19,13 @@ export class CreditcarddropdownComponent implements OnInit {
   private opciones: any;
   private contenidoSelect: any;
 
+  public isActiveSelect:boolean;
   public listCard:ListCreditCard[];
+  public arrowIcon:string;
 
   constructor(@Inject(DOCUMENT) private document: Document) {
+
+    this.isActiveSelect = false;
 
     this.listCard = [
       {descripcion: '**** 4512', imagen: 'assets/img/ico/card-master-ico.png', valor: '**** 4512'},
@@ -31,6 +35,8 @@ export class CreditcarddropdownComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.arrowIcon = 'assets/img/ico/down-arrow-icon.png';
+
     this.initVar();
   }
 
@@ -41,8 +47,14 @@ export class CreditcarddropdownComponent implements OnInit {
   }
 
   activeSelect(){
+    this.isActiveSelect = !this.isActiveSelect;
+
+    this.arrowIcon = ( this.isActiveSelect) ? 'assets/img/ico/up-arrow-icon.png' : 'assets/img/ico/down-arrow-icon.png';
+
+     
     this.select.classList.toggle('active');
     this.opciones.classList.toggle('active');
+    
   }
 
   selectOption(card, $e){
