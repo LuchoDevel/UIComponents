@@ -1,16 +1,20 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from '@angular/common';
 import { CreditcarddropdownComponent } from './creditcarddropdown/creditcarddropdown.component';
+import { NeonButtonComponent } from './neon-button/neon-button.component';
 
 @NgModule({
     declarations: [
 
-    CreditcarddropdownComponent],
-    imports:[
+        CreditcarddropdownComponent,
+
+        NeonButtonComponent],
+    imports: [
         CommonModule
     ],
     exports: [
-        CreditcarddropdownComponent
+        CreditcarddropdownComponent,
+        NeonButtonComponent
     ],
     providers: []
 })
