@@ -5,8 +5,9 @@ import { Pipe, PipeTransform } from "@angular/core";
 export class CreditUSerCardPipe implements PipeTransform {
 
     private icon = '****';
-    transform(value: any) {
-        
+    transform(numberCard: string) {
+        const newNumberCard = numberCard.slice(-4);
+        return `${this.icon}${newNumberCard}`;
     }
 
 }

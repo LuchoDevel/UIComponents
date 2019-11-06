@@ -1,35 +1,68 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input, Output, EventEmitter } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { CreditCardImagePipe } from './pipe/creditCardImage.pipe';
+import { CreditUSerCardPipe } from './pipe/userCreditCard.pipe';
 
 export interface ListCreditCard {
-  imagen: string;
-  titulo?: string;
-  descripcion: string;
-  valor?: any;
+  value?: any;
 }
 
 @Component({
   selector: 'app-creditcarddropdown',
   templateUrl: './creditcarddropdown.component.html',
-  styleUrls: ['./creditcarddropdown.component.scss']
+  styleUrls: ['./creditcarddropdown.component.scss'],
+  providers: [CreditUSerCardPipe]
 })
 export class CreditcarddropdownComponent implements OnInit {
 
+  /**
+   * Lista de tarjetas a mostrar en el select
+   */
+  @Input() listCards: string[];
+
+  /**
+   * Retorna el numero de tarjeta seleccionado
+   */
+  @Output() cardSelectedEvent =  new EventEmitter<string>();
+
+
+  /**
+   * Variables para DoomHTML
+   */
   private select: any;
   private opciones: any;
   private contenidoSelect: any;
 
+  /**
+   * Indica si se ha dado click al select
+   */
   public isActiveSelect:boolean;
+
+  /**
+   * 
+   */
   public listCard:ListCreditCard[];
+
+  /**
+   * Icono de flecha a mostrar en el select
+   */
   public arrowIcon:string;
 
-  constructor(@Inject(DOCUMENT) private document: Document) {
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+  
+    private cardImagenPipe: CreditCardImagePipe
+    ) {
+
+
 
     this.isActiveSelect = false;
+     
+    
 
     this.listCard = [
-      {descripcion: '**** 4512', imagen: 'assets/img/ico/card-master-ico.png', valor: '**** 4512'},
-      {descripcion: '**** 666', imagen: 'assets/img/ico/card-visa-ico.png', valor: '**** 666'}
+      { value: '45128787'},
+      { value: '56678978'}
 
     ]
   }
@@ -48,10 +81,7 @@ export class CreditcarddropdownComponent implements OnInit {
 
   activeSelect(){
     this.isActiveSelect = !this.isActiveSelect;
-
     this.arrowIcon = ( this.isActiveSelect) ? 'assets/img/ico/up-arrow-icon.png' : 'assets/img/ico/down-arrow-icon.png';
-
-     
     this.select.classList.toggle('active');
     this.opciones.classList.toggle('active');
     
@@ -61,6 +91,18 @@ export class CreditcarddropdownComponent implements OnInit {
     $e.preventDefault();
     this.contenidoSelect.innerHTML = $e.currentTarget.innerHTML;
     // console.log($e.currentTarget.innerHTML);
-    console.log(card);
+    this.cardSelectedEvent.emit(card);
   }
+
+  selectIConCard(numberCard): string{
+    const typeCard =  this.cardImagenPipe.transform(numberCard);
+
+    switch (typeCard) {
+      case 'Mastercard':
+        return 'assets/img/ico/card-master-ico.png';
+      case 'Visa':
+          return 'assets/img/ico/card-visa-ico.png';
+    }
+  }
+
 }

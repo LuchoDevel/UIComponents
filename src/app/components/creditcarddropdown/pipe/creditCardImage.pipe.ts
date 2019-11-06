@@ -3,7 +3,7 @@ import { Pipe, PipeTransform } from "@angular/core";
  * Pipe retonar el tipo de tarjeta segun el numero de la misma
  */
 @Pipe({name: 'creditCardImagePipe'})
-export class CreditCardImage implements PipeTransform {
+export class CreditCardImagePipe implements PipeTransform {
 
     private icon: string;
 

@@ -1,16 +1,18 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from '@angular/common';
 import { CreditcarddropdownComponent } from './creditcarddropdown/creditcarddropdown.component';
+import { CreditCartModule } from './creditcarddropdown/creditCard.Module';
 
 @NgModule({
     declarations: [
 
-    CreditcarddropdownComponent],
+    ],
     imports:[
-        CommonModule
+        CommonModule,
+        CreditCartModule
     ],
     exports: [
-        CreditcarddropdownComponent
+        CreditCartModule
     ],
     providers: []
 })

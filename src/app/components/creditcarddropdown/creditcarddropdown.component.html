@@ -21,9 +21,9 @@
           <ng-container *ngFor="let card of listCard">
             <a href="#" id="opcion" (click)="selectOption(card, $event)">
               <div class="contenido-opcion">
-                  <img [src]="card.imagen" alt="masterIco">
+                  <img [src]="selectIConCard(card.value)" alt="masterIco">
                   <div class="textos">
-                    <p class="descripcion">{{card.descripcion}}</p>
+                    <p class="descripcion">{{card.value | creditCardUserPipe}}</p>
                   </div>
               </div>
             </a>
