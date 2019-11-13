@@ -9,5 +9,5 @@
     <h4>
         Dropdown:
     </h4>
-    <app-creditcarddropdown></app-creditcarddropdown>
+    <app-creditcarddropdown (cardSelectedEvent)="selectCard($event)" [cards]="listCard"></app-creditcarddropdown>
 </div>

@@ -6,10 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+public listCard;
+  constructor() { 
+    
+    this.listCard = [
+      { value: '45128787'},
+      { value: '56678978'}
 
-  constructor() { }
+    ]
+  }
 
   ngOnInit() {
   }
 
+
+  selectCard($event){
+    console.log('Evento que llega al padre ', $event);
+  }
 }

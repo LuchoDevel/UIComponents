@@ -18,7 +18,7 @@ export class CreditcarddropdownComponent implements OnInit {
   /**
    * Lista de tarjetas a mostrar en el select
    */
-  @Input() listCards: string[];
+  @Input() cards: any;
 
   /**
    * Retorna el numero de tarjeta seleccionado
@@ -54,22 +54,13 @@ export class CreditcarddropdownComponent implements OnInit {
     private cardImagenPipe: CreditCardImagePipe
     ) {
 
-
-
     this.isActiveSelect = false;
      
-    
-
-    this.listCard = [
-      { value: '45128787'},
-      { value: '56678978'}
-
-    ]
   }
 
   ngOnInit() {
     this.arrowIcon = 'assets/img/ico/down-arrow-icon.png';
-
+    this.listCard = this.cards;
     this.initVar();
   }
 
