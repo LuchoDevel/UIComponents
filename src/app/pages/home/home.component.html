@@ -7,7 +7,13 @@
 
 <div class="content">
     <h4>
-        Dropdown:
+        CardsMiles:
     </h4>
-    <app-creditcarddropdown (cardSelectedEvent)="selectCard($event)" [cards]="listCard"></app-creditcarddropdown>
+    <app-creditcarddropdown (cardSelectedEvent)="selectCardMiles($event)" [cards]="listCardMiles"></app-creditcarddropdown>
+  <hr>
+  <br><br><br>
+  <h4>
+    CardsCash:
+  </h4>
+  <app-creditcarddropdown (cardSelectedEvent)="selectCardCash($event)" [cards]="listCardCash"></app-creditcarddropdown>
 </div>

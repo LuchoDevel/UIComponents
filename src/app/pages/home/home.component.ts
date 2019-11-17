@@ -6,21 +6,38 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-public listCard;
-  constructor() { 
-    
-    this.listCard = [
-      { value: '45128787'},
-      { value: '56678978'}
+public listCardCash;
+public listCardMiles;
+  constructor() {
 
-    ]
+    this.listCardCash = [
+      {value: '46666666'},
+      {value: '56666666'}
+    ];
+
+    this.listCardMiles = [
+      { value: '47777777'},
+      { value: '57777777'}
+    ];
   }
 
   ngOnInit() {
   }
 
 
-  selectCard($event){
-    console.log('Evento que llega al padre ', $event);
+  /**
+   * Metodo para capturar eventos de tarjetas Miles
+   * @param $cardMile number of card
+   */
+  public selectCardMiles($cardMile) {
+    console.log('Card del combo miles ', $cardMile);
+  }
+
+  /**
+   * Método para capturar los eventos de tarjetas cash
+   * @param $cardMile number of card
+   */
+  public selectCardCash($cardMile) {
+    console.log('Card del combo miles ', $cardMile);
   }
 }

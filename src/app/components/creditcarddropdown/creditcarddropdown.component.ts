@@ -1,10 +1,12 @@
-import { Component, OnInit, Inject, Input, Output, EventEmitter } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-import { CreditCardImagePipe } from './pipe/creditCardImage.pipe';
-import { CreditUSerCardPipe } from './pipe/userCreditCard.pipe';
+import {Component, OnInit, Inject, Input, Output, EventEmitter, ViewChild, ElementRef} from '@angular/core';
+import {DOCUMENT} from '@angular/common';
+import {CreditCardImagePipe} from './pipe/creditCardImage.pipe';
+import {CreditUSerCardPipe} from './pipe/userCreditCard.pipe';
+
 
 export interface ListCreditCard {
   value?: any;
+  default?: boolean;
 }
 
 @Component({
@@ -23,8 +25,14 @@ export class CreditcarddropdownComponent implements OnInit {
   /**
    * Retorna el numero de tarjeta seleccionado
    */
-  @Output() cardSelectedEvent =  new EventEmitter<string>();
+  @Output() cardSelectedEvent = new EventEmitter<string>();
 
+  /**
+   * Variables referencia
+   */
+  @ViewChild('select', {static: false, read: ElementRef}) selectElement: ElementRef;
+  @ViewChild('options', {static: false, read: ElementRef}) optionsElement: ElementRef;
+  @ViewChild('contentSelect', {static: false, read: ElementRef}) contentSelectElement: ElementRef;
 
   /**
    * Variables para DoomHTML
@@ -36,26 +44,24 @@ export class CreditcarddropdownComponent implements OnInit {
   /**
    * Indica si se ha dado click al select
    */
-  public isActiveSelect:boolean;
+  public isActiveSelect: boolean;
 
   /**
-   * 
+   *
    */
-  public listCard:ListCreditCard[];
+  public listCard: ListCreditCard[];
 
   /**
    * Icono de flecha a mostrar en el select
    */
-  public arrowIcon:string;
+  public arrowIcon: string;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
-  
     private cardImagenPipe: CreditCardImagePipe
-    ) {
+  ) {
 
     this.isActiveSelect = false;
-     
   }
 
   ngOnInit() {
@@ -67,32 +73,32 @@ export class CreditcarddropdownComponent implements OnInit {
   initVar() {
     this.select = this.document.querySelector('#select');
     this.opciones = this.document.querySelector('#opciones');
-    this.contenidoSelect  = this.document.querySelector('#select .contenido-select');
+    this.contenidoSelect = this.document.querySelector('#select .contenido-select');
   }
 
-  activeSelect(){
+  activeSelect() {
     this.isActiveSelect = !this.isActiveSelect;
-    this.arrowIcon = ( this.isActiveSelect) ? 'assets/img/ico/up-arrow-icon.png' : 'assets/img/ico/down-arrow-icon.png';
-    this.select.classList.toggle('active');
-    this.opciones.classList.toggle('active');
-    
+    this.arrowIcon = (this.isActiveSelect) ? 'assets/img/ico/up-arrow-icon.png' : 'assets/img/ico/down-arrow-icon.png';
+    this.selectElement.nativeElement.classList.toggle('active');
+    // this.select.classList.toggle('active');
+    this.optionsElement.nativeElement.classList.toggle('active');
+    // this.opciones.classList.toggle('active');
   }
 
-  selectOption(card, $e){
+  selectOption(card, $e) {
     $e.preventDefault();
-    this.contenidoSelect.innerHTML = $e.currentTarget.innerHTML;
-    // console.log($e.currentTarget.innerHTML);
-    this.cardSelectedEvent.emit(card);
+    this.contentSelectElement.nativeElement.innerHTML = $e.currentTarget.innerHTML;
+    console.log('Card active ', card);
+    this.cardSelectedEvent.emit(cardlistCardCashEvent);
   }
 
-  selectIConCard(numberCard): string{
-    const typeCard =  this.cardImagenPipe.transform(numberCard);
-
+  selectIConCard(numberCard): string {
+    const typeCard = this.cardImagenPipe.transform(numberCard);
     switch (typeCard) {
       case 'Mastercard':
         return 'assets/img/ico/card-master-ico.png';
       case 'Visa':
-          return 'assets/img/ico/card-visa-ico.png';
+        return 'assets/img/ico/card-visa-ico.png';
     }
   }
 

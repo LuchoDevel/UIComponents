@@ -1,11 +1,11 @@
-<!--Credit Card Dropdown 
+<!--Credit Card Dropdown
 @Author Luis Morales
 -->
 <div class="contenedor">
     <div class="selectbox" (click)="activeSelect()">
       <!--SELECT-->
-        <div class="select" id="select">
-          <div class="contenido-select">
+        <div  #select class="select" id="select">
+          <div #contentSelect class="contenido-select">
             <p class="descripcion">Seleccionar tarjeta</p>
           </div>
           <div class="separador"></div>
@@ -17,7 +17,7 @@
 
 
       <!--OPTIONS-->
-      <div class="opciones" id="opciones">
+      <div #options class="opciones" id="opciones">
           <ng-container *ngFor="let card of listCard">
             <a href="#" id="opcion" (click)="selectOption(card, $event)">
               <div class="contenido-opcion">
