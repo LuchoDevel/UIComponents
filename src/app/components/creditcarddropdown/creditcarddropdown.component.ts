@@ -89,7 +89,7 @@ export class CreditcarddropdownComponent implements OnInit {
     $e.preventDefault();
     this.contentSelectElement.nativeElement.innerHTML = $e.currentTarget.innerHTML;
     console.log('Card active ', card);
-    this.cardSelectedEvent.emit(cardlistCardCashEvent);
+    this.cardSelectedEvent.emit(card);
   }
 
   selectIConCard(numberCard): string {
