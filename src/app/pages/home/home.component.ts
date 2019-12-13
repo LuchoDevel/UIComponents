@@ -29,7 +29,7 @@ public listCardMiles;
    * Metodo para capturar eventos de tarjetas Miles
    * @param $cardMile number of card
    */
-  public selectCardMiles($cardMile) {
+  public selectCardMiles($cardMile: any) {
     console.log('Card del combo miles ', $cardMile);
   }
 
@@ -37,7 +37,7 @@ public listCardMiles;
    * Método para capturar los eventos de tarjetas cash
    * @param $cardMile number of card
    */
-  public selectCardCash($cardMile) {
+  public selectCardCash($cardMile: any) {
     console.log('Card del combo miles ', $cardMile);
   }
 }
